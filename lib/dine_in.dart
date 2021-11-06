@@ -73,7 +73,7 @@ class DineInButton extends StatelessWidget {
           children: [
             const Icon(
               Icons.shopping_cart_outlined,
-              color: Colors.red,
+              color: Colors.red[700],
               size: 30,
             ),
             Text(
