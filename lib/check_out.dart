@@ -50,7 +50,7 @@ class CheckOut extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: const Center(
-                  child: Text("PAYMENT"),
+                  child: Text("PAY NOW"),
                 ),
               ),
             ),
