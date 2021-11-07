@@ -18,8 +18,6 @@ List<DishCategory> dishCategory = List.generate(
   ),
 );
 
-// List<CartItem> selectedItem =[];
-
 class SelectedItemProvider extends ChangeNotifier {
   int tempDetailQuantity = 1;
   void increaseTemp() {
