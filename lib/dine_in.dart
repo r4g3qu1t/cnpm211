@@ -71,7 +71,7 @@ class DineInButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Icon(
+            Icon(
               Icons.shopping_cart_outlined,
               color: Colors.red[700],
               size: 30,

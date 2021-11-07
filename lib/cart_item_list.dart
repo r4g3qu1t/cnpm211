@@ -88,19 +88,20 @@ class CartItemList extends StatelessWidget {
                     ),
                     Expanded(
                       child: IconButton(
-                          onPressed: () {
-                            int id = context
-                                .read<SelectedItemProvider>()
-                                .selectedItem[index]
-                                .selectedDish
-                                .itemID;
-                            // print(id);
-                            context.read<SelectedItemProvider>().remove(id);
-                          },
-                          icon: const Icon(
-                            Icons.delete,
-                            color: Colors.red[700],
-                          )),
+                        onPressed: () {
+                          int id = context
+                              .read<SelectedItemProvider>()
+                              .selectedItem[index]
+                              .selectedDish
+                              .itemID;
+                          // print(id);
+                          context.read<SelectedItemProvider>().remove(id);
+                        },
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.red[700],
+                        ),
+                      ),
                     )
                   ],
                 ),

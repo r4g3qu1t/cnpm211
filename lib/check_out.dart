@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pos/data.dart';
+import 'package:cnpm/data.dart';
 import 'package:provider/provider.dart';
 
 class CheckOut extends StatelessWidget {

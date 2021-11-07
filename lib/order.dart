@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pos/dish_item.dart';
+import 'package:cnpm/dish_item.dart';
 import 'return_button.dart';
 import 'dine_in.dart';
 import 'cart_item_list.dart';
