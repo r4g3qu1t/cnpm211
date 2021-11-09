@@ -49,8 +49,11 @@ class CategoryCard extends StatelessWidget {
             // const SizedBox(
             //   height: 10,
             // ),
-            Text(
-              dishCategory[index].categoryName,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                dishCategory[index].categoryName,
+              ),
             ),
           ],
         ),

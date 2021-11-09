@@ -31,9 +31,9 @@ class CheckOut extends StatelessWidget {
                     Text(context
                         .watch<SelectedItemProvider>()
                         .total()
-                        .toStringAsFixed(2)),
+                        .toString()),
                     Text(
-                        "Incl tax 10% = \$ ${(context.watch<SelectedItemProvider>().total() * 0.1).toStringAsFixed(2)}")
+                        "Tax 10% = ${(context.watch<SelectedItemProvider>().total() * 0.1).toString()} VND")
                   ],
                 ),
               ),
