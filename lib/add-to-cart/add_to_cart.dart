@@ -1,8 +1,8 @@
+import 'dart:ui';
+import 'package:cnpm/add-to-cart/on_tap_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../data.dart';
-import 'on_tap_handler.dart';
 
 class AddToCart extends StatelessWidget {
   const AddToCart({
@@ -18,72 +18,91 @@ class AddToCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            offset: const Offset(0, 4),
-            blurRadius: 20,
-            color: const Color(0xFFB0CCE1).withOpacity(0.7),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(5),
       ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(10),
-          onTap: () {
-            addToCart(context, cateIndex, index);
-          },
+      child: InkWell(
+        hoverColor: Colors.green[900],
+        borderRadius: BorderRadius.circular(5),
+        onTap: () => {addToCart(context, cateIndex, index)},
+        child: Card(
+          elevation: 0,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
+                flex: 3,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(
-                        dishCategory[cateIndex].listDishItem[index].svgSrc),
-                    const SizedBox(
-                      height: 20,
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        constraints:
+                            const BoxConstraints(maxWidth: 300, minWidth: 200),
+                        child: Image(
+                          fit: BoxFit.contain,
+                          alignment: Alignment.center,
+                          image: AssetImage(dishCategory[cateIndex]
+                              .listDishItem[index]
+                              .svgSrc),
+                        ),
+                        // width: 300,
+                        // color: Colors.amber,
+                        // child: SvgPicture.asset(
+                        //   dishCategory[cateIndex].listDishItem[index].svgSrc,
+                        //   fit: BoxFit.fitHeight,
+                        // ),
+                      ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Text(
-                        dishCategory[cateIndex].listDishItem[index].dishName,
-                        // maxLines: 1,
-                        overflow: TextOverflow.visible,
+                    // Spacer(),
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            dishCategory[cateIndex]
+                                .listDishItem[index]
+                                .dishName,
+                            // maxLines: 1,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(20),
+              Expanded(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Flexible(
-                      fit: FlexFit.tight,
-                      child: Text(
-                        "${dishCategory[cateIndex].listDishItem[index].price} VND",
-                        style: const TextStyle(
-                            color: Colors.red, fontWeight: FontWeight.bold),
+                    Expanded(
+                      flex: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: Text(
+                          "${dishCategory[cateIndex].listDishItem[index].price} VND",
+                          style: const TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        context
-                            .read<SelectedItemProvider>()
-                            .add(cateIndex, index);
-                      },
-                      icon: const Icon(Icons.add),
-                      color: Colors.amber,
+                    Expanded(
+                      child: IconButton(
+                        onPressed: () {
+                          context
+                              .read<SelectedItemProvider>()
+                              .add(cateIndex, index);
+                        },
+                        icon: const Icon(Icons.add),
+                        color: Colors.green[900],
+                      ),
                     )
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

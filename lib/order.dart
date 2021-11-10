@@ -3,55 +3,102 @@ import 'package:cnpm/dish_item.dart';
 import 'return_button.dart';
 import 'dine_in.dart';
 import 'cart_item_list.dart';
+import 'dart:ui';
 import 'check_out.dart';
 
+var size = window.physicalSize;
 
 class OrderPage extends StatelessWidget {
-  const OrderPage({Key? key}) : super(key: key);
-
-  final double _height = 700, _width = 1000;
+  OrderPage({Key? key}) : super(key: key);
+  final double _height = size.height, _width = size.width;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          height: _height,
-          width: _width,
-          decoration: BoxDecoration(
-            color: Colors.amber,
-            borderRadius: BorderRadius.circular(5),
-          ),
-          child: Row(
-            children: [
-              SizedBox(
-                height: _height,
-                width: _width * 0.65,
+    return Scaffold(body: LayoutBuilder(
+      builder: (context, constraints) {
+        return constraints.maxWidth < 800
+            ? NarrowScreen(height: _height, width: _width)
+            : WideScreen(height: _height, width: _width);
+      },
+    ));
+  }
+}
+
+class WideScreen extends StatelessWidget {
+  const WideScreen({
+    Key? key,
+    required double height,
+    required double width,
+  })  : _height = height,
+        _width = width,
+        super(key: key);
+
+  final double _height;
+  final double _width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        height: _height,
+        width: _width,
+        child: Row(
+          children: [
+            Expanded(
+              flex: 7,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ReturnButton(),
+                  DishItemWidget(height: _height),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 3,
+              child: Card(
+                elevation: 0,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ReturnButton(height: _height),
-                    DishItemWidget(height: _height),
+                  children: const [
+                    DineInButton(),
+                    CartItemList(),
+                    CheckOut(),
                   ],
                 ),
               ),
-              SizedBox(
-                height: _height,
-                width: _width * 0.35,
-                child: Card(
-                  elevation: 50,
-                  child: Column(
-                    children: const [
-                      //DINE IN ////////////////////////
-                      DineInButton(),
-                      //SELECTED ITEM///////////////////////////
-                      CartItemList(),
-                      //PAYMENT///////////////////////////////////////
-                      CheckOut(),
-                    ],
-                  ),
-                ),
-              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NarrowScreen extends StatelessWidget {
+  const NarrowScreen({
+    Key? key,
+    required double height,
+    required double width,
+  })  : _height = height,
+        _width = width,
+        super(key: key);
+
+  final double _height;
+  final double _width;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Center(
+        child: SizedBox(
+          height: _height,
+          width: _width,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const ReturnButton(),
+              DishItemWidget(height: _height),
             ],
           ),
         ),

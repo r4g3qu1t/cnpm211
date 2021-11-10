@@ -18,7 +18,7 @@ class CheckOut extends StatelessWidget {
             children: [
               const Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Text("Total:"),
+                child: Text("Tổng:"),
               ),
               Expanded(
                 child: Container(),
@@ -33,7 +33,7 @@ class CheckOut extends StatelessWidget {
                         .total()
                         .toString()),
                     Text(
-                        "Tax 10% = ${(context.watch<SelectedItemProvider>().total() * 0.1).toString()} VND")
+                        "Thuế VAT 10% = ${(context.watch<SelectedItemProvider>().total() * 0.1).toString()} VND")
                   ],
                 ),
               ),
@@ -50,7 +50,7 @@ class CheckOut extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: const Center(
-                  child: Text("PAY NOW"),
+                  child: Text("THANH TOÁN"),
                 ),
               ),
             ),

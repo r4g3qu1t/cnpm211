@@ -66,32 +66,29 @@ class DineInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 1,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Icon(
-              Icons.shopping_cart_outlined,
-              color: Colors.red[700],
-              size: 30,
-            ),
-            Text(
-              "Your Cart (${context.watch<SelectedItemProvider>().totalitem()})",
-              style: const TextStyle(
-                  color: Colors.red, fontSize: 16, fontWeight: FontWeight.w600),
-            ),
-            Expanded(child: Container()),
-            ElevatedButton(
-                onPressed: () {
-                  createAlertDialog(context);
-                },
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Text("Dine In"),
-                ))
-          ],
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Icon(
+            Icons.shopping_cart_outlined,
+            color: Colors.red[700],
+            size: 30,
+          ),
+          Text(
+            "Giỏ hàng (${context.watch<SelectedItemProvider>().totalitem()})",
+            style: const TextStyle(
+                color: Colors.red, fontSize: 16, fontWeight: FontWeight.w600),
+          ),
+          Expanded(child: Container()),
+          ElevatedButton(
+              onPressed: () {
+                createAlertDialog(context);
+              },
+              child: const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Text("Chọn bàn"),
+              ))
+        ],
       ),
     );
   }
