@@ -56,21 +56,19 @@ class CartItemList extends StatelessWidget {
               },
               background: Container(
                 decoration: BoxDecoration(
-                  color: Colors.green[900],
+                  color: const Color(0xff1b5a20).withOpacity(0.5),
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: const Center(
                   child: Text(
                     "Trượt sang phải để xóa",
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        overflow: TextOverflow.ellipsis),
+                        color: Colors.white, overflow: TextOverflow.ellipsis),
                   ),
                 ),
               ),
               child: Card(
-                elevation: 50,
+                color: const Color.fromRGBO(255, 255, 255, 0.9),
                 child: SizedBox(
                   height: 100,
                   child: Padding(
@@ -108,21 +106,14 @@ class CartItemList extends StatelessWidget {
                                       "${context.watch<SelectedItemProvider>().selectedItem[index].quantity}",
                                     ),
                                     _increaseButton(index, context),
-                                    Expanded(
-                                      flex: 1,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Text(
-                                            "${context.watch<SelectedItemProvider>().selectedItem[index].selectedDish.price * context.watch<SelectedItemProvider>().selectedItem[index].quantity} VND",
-                                            style: const TextStyle(
-                                                color: Colors.red,
-                                                fontSize: 16),
-                                          ),
-                                        ],
+                                    Flexible(
+                                      child: FittedBox(
+                                        fit: BoxFit.scaleDown,
+                                        child: Text(
+                                          "${context.watch<SelectedItemProvider>().selectedItem[index].selectedDish.price * context.watch<SelectedItemProvider>().selectedItem[index].quantity} VND",
+                                          style: const TextStyle(
+                                              color: Colors.red, fontSize: 16),
+                                        ),
                                       ),
                                     ),
                                   ],

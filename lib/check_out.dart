@@ -18,7 +18,9 @@ class CheckOut extends StatelessWidget {
             children: [
               const Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Text("Tổng:"),
+                child: Text(
+                  "Tổng:",
+                ),
               ),
               Expanded(
                 child: Container(),

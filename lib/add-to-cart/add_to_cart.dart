@@ -16,16 +16,16 @@ class AddToCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-      ),
+    return Material(
+      color: Colors.transparent,
       child: InkWell(
-        hoverColor: Colors.green[900],
-        borderRadius: BorderRadius.circular(5),
+        hoverColor: const Color.fromRGBO(0, 100, 0, 0.9),
         onTap: () => {addToCart(context, cateIndex, index)},
-        child: Card(
-          elevation: 0,
+        borderRadius: BorderRadius.circular(5),
+        child: Container(
+          decoration: BoxDecoration(
+              color: const Color.fromRGBO(255, 255, 255, 0.9),
+              borderRadius: BorderRadius.circular(5)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -37,22 +37,19 @@ class AddToCart extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 3,
-                      child: Container(
-                        constraints:
-                            const BoxConstraints(maxWidth: 300, minWidth: 200),
-                        child: Image(
-                          fit: BoxFit.contain,
-                          alignment: Alignment.center,
-                          image: AssetImage(dishCategory[cateIndex]
-                              .listDishItem[index]
-                              .svgSrc),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Container(
+                          constraints: const BoxConstraints(
+                              maxWidth: 300, minWidth: 200),
+                          child: Image(
+                            fit: BoxFit.contain,
+                            alignment: Alignment.center,
+                            image: AssetImage(dishCategory[cateIndex]
+                                .listDishItem[index]
+                                .svgSrc),
+                          ),
                         ),
-                        // width: 300,
-                        // color: Colors.amber,
-                        // child: SvgPicture.asset(
-                        //   dishCategory[cateIndex].listDishItem[index].svgSrc,
-                        //   fit: BoxFit.fitHeight,
-                        // ),
                       ),
                     ),
                     // Spacer(),

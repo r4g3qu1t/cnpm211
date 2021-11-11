@@ -27,7 +27,6 @@ Widget _increaseButton(BuildContext context) {
 void addToCart(context, cateIndex, index) {
   Size size = MediaQuery.of(context).size;
   double _height = size.height * 0.7, _width = size.width * 0.6;
-
   showDialog(
     context: context,
     builder: (BuildContext context) => AlertDialog(
@@ -70,8 +69,7 @@ void addToCart(context, cateIndex, index) {
                     fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 10),
-              const Text(
-                  'Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều Mua đi, cảm ơn nhiều '),
+              const Text('Mua đi, cảm ơn nhiều'),
             ],
           ),
         ),

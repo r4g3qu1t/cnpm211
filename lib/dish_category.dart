@@ -30,30 +30,34 @@ class CategoryCard extends StatelessWidget {
     return Container(
       width: 150,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(5),
+        color: const Color.fromRGBO(255, 255, 255, 0.9),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            flex: 3,
-            child: Image.asset(dishCategory[index].svgSrc),
-          ),
-          Flexible(
-            fit: FlexFit.loose,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  dishCategory[index].categoryName,
-                  style: const TextStyle(color: Colors.black),
-                  maxLines: 2,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              flex: 3,
+              child: Image.asset(dishCategory[index].svgSrc),
+            ),
+            Flexible(
+              fit: FlexFit.loose,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    dishCategory[index].categoryName,
+                    style: const TextStyle(color: Colors.black),
+                    maxLines: 2,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

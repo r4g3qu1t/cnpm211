@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cnpm/dish_item.dart';
+import 'mobile_return_button.dart';
 import 'return_button.dart';
 import 'dine_in.dart';
 import 'cart_item_list.dart';
@@ -39,36 +40,48 @@ class WideScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SizedBox(
+      child: Container(
         height: _height,
         width: _width,
-        child: Row(
-          children: [
-            Expanded(
-              flex: 7,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const ReturnButton(),
-                  DishItemWidget(height: _height),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Card(
-                elevation: 0,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Container(
+          color: const Color.fromRGBO(255, 255, 255, 0.2),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 7,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    DineInButton(),
-                    CartItemList(),
-                    CheckOut(),
+                  children: [
+                    const ReturnButton(),
+                    DishItemWidget(height: _height),
                   ],
                 ),
               ),
-            )
-          ],
+              Expanded(
+                flex: 3,
+                child: Card(
+                   color: Color.fromRGBO(255, 255, 255, 0.6),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        DineInButton(),
+                        CartItemList(),
+                        CheckOut(),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -91,13 +104,19 @@ class NarrowScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Center(
-        child: SizedBox(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/background.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
           height: _height,
           width: _width,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const ReturnButton(),
+              const MobileReturnButton(),
               DishItemWidget(height: _height),
             ],
           ),

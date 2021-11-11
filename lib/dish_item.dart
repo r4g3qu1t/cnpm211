@@ -36,7 +36,7 @@ class _DishItemWidgetState extends State<DishItemWidget>
           Expanded(
             flex: 2,
             child: Card(
-              elevation: 50,
+              color: Color.fromRGBO(255, 255, 255, 0.6),
               child: Container(
                 decoration: BoxDecoration(
                   // color: Colors.white,
@@ -46,6 +46,10 @@ class _DishItemWidgetState extends State<DishItemWidget>
                   controller: _tabController,
                   indicatorWeight: 4.0,
                   indicatorSize: TabBarIndicatorSize.label,
+                  indicator: BoxDecoration(
+                    color: const Color(0xff1b5e20).withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
                   indicatorColor: Colors.green[900],
                   isScrollable: true,
                   tabs: categoryTabGenerator(widget.height),
@@ -55,11 +59,8 @@ class _DishItemWidgetState extends State<DishItemWidget>
           ),
           Expanded(
             flex: 7,
-            // child: Container(
-            //   color: Colors.black,
-            // ),
             child: Card(
-              elevation: 50,
+              color: Color.fromRGBO(255, 255, 255, 0.6),
               child: TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 controller: _tabController,
