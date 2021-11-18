@@ -4,26 +4,22 @@ import 'main.dart';
 class ReturnButton extends StatelessWidget {
   const ReturnButton({
     Key? key,
-    required double height,
-  })  : _height = height,
-        super(key: key);
-
-  final double _height;
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: _height * 0.1,
+    return Expanded(
+      flex: 1,
       child: Card(
-        elevation: 50,
+        color: Color.fromRGBO(255, 255, 255, 0.6),
         child: Align(
           alignment: Alignment.centerLeft,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 17),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const MyHomePage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MyHomePage()));
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -32,7 +28,7 @@ class ReturnButton extends StatelessWidget {
                   children: const [
                     Icon(Icons.arrow_back),
                     SizedBox(width: 10),
-                    Text("Back to home"),
+                    Text("Quay lại"),
                   ],
                 ),
               ),

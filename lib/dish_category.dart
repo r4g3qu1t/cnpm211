@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'data.dart';
 
 List<Tab> categoryTabGenerator(double height) {
@@ -7,8 +6,11 @@ List<Tab> categoryTabGenerator(double height) {
   for (int i = 0; i < dishCategory.length; i++) {
     list.add(
       Tab(
-        height: height * 0.2 * 0.8,
-        child: CategoryCard(index: i),
+        height: height * 0.2,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CategoryCard(index: i),
+        ),
       ),
     );
   }
@@ -25,32 +27,34 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 50,
-      child: Container(
-        width: 160,
-        //height: 160,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: const [
-            BoxShadow(
-              offset: Offset(0, 4),
-              blurRadius: 20,
-              color: Color(0xFFB0CCE1),
-            ),
-          ],
-        ),
+    return Container(
+      width: 150,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        color: const Color.fromRGBO(255, 255, 255, 0.9),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset(dishCategory[index].svgSrc),
-            // const SizedBox(
-            //   height: 10,
-            // ),
-            Text(
-              dishCategory[index].categoryName,
+            Expanded(
+              flex: 3,
+              child: Image.asset(dishCategory[index].svgSrc),
+            ),
+            Flexible(
+              fit: FlexFit.loose,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    dishCategory[index].categoryName,
+                    style: const TextStyle(color: Colors.black),
+                    maxLines: 2,
+                  ),
+                ),
+              ),
             ),
           ],
         ),

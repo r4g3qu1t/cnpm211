@@ -1,57 +1,123 @@
 import 'package:flutter/material.dart';
 import 'package:cnpm/dish_item.dart';
+import 'mobile_return_button.dart';
 import 'return_button.dart';
 import 'dine_in.dart';
 import 'cart_item_list.dart';
+import 'dart:ui';
 import 'check_out.dart';
 
+var size = window.physicalSize;
 
 class OrderPage extends StatelessWidget {
-  const OrderPage({Key? key}) : super(key: key);
-
-  final double _height = 700, _width = 1000;
+  OrderPage({Key? key}) : super(key: key);
+  final double _height = size.height, _width = size.width;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          height: _height,
-          width: _width,
-          decoration: BoxDecoration(
-            color: Colors.amber,
-            borderRadius: BorderRadius.circular(5),
+    return Scaffold(body: LayoutBuilder(
+      builder: (context, constraints) {
+        return constraints.maxWidth < 800
+            ? NarrowScreen(height: _height, width: _width)
+            : WideScreen(height: _height, width: _width);
+      },
+    ));
+  }
+}
+
+class WideScreen extends StatelessWidget {
+  const WideScreen({
+    Key? key,
+    required double height,
+    required double width,
+  })  : _height = height,
+        _width = width,
+        super(key: key);
+
+  final double _height;
+  final double _width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        height: _height,
+        width: _width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.jpg'),
+            fit: BoxFit.cover,
           ),
+        ),
+        child: Container(
+          color: const Color.fromRGBO(255, 255, 255, 0.2),
           child: Row(
             children: [
-              SizedBox(
-                height: _height,
-                width: _width * 0.65,
+              Expanded(
+                flex: 7,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ReturnButton(height: _height),
+                    const ReturnButton(),
                     DishItemWidget(height: _height),
                   ],
                 ),
               ),
-              SizedBox(
-                height: _height,
-                width: _width * 0.35,
+              Expanded(
+                flex: 3,
                 child: Card(
-                  elevation: 50,
-                  child: Column(
-                    children: const [
-                      //DINE IN ////////////////////////
-                      DineInButton(),
-                      //SELECTED ITEM///////////////////////////
-                      CartItemList(),
-                      //PAYMENT///////////////////////////////////////
-                      CheckOut(),
-                    ],
+                   color: Color.fromRGBO(255, 255, 255, 0.6),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        DineInButton(),
+                        CartItemList(),
+                        CheckOut(),
+                      ],
+                    ),
                   ),
                 ),
-              ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class NarrowScreen extends StatelessWidget {
+  const NarrowScreen({
+    Key? key,
+    required double height,
+    required double width,
+  })  : _height = height,
+        _width = width,
+        super(key: key);
+
+  final double _height;
+  final double _width;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Center(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/background.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          height: _height,
+          width: _width,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const MobileReturnButton(),
+              DishItemWidget(height: _height),
             ],
           ),
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'add_to_cart.dart';
+import 'add-to-cart/add_to_cart.dart';
 import 'dish_category.dart';
 import 'data.dart';
 
@@ -29,34 +29,38 @@ class _DishItemWidgetState extends State<DishItemWidget>
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: widget.height * 0.9,
+    return Expanded(
+      flex: 9,
       child: Column(
         children: [
-          SizedBox(
-            height: widget.height * 0.2,
+          Expanded(
+            flex: 2,
             child: Card(
-              elevation: 50,
+              color: Color.fromRGBO(255, 255, 255, 0.6),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  // color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TabBar(
                   controller: _tabController,
                   indicatorWeight: 4.0,
                   indicatorSize: TabBarIndicatorSize.label,
-                  indicatorColor: Colors.redAccent,
+                  indicator: BoxDecoration(
+                    color: const Color(0xff1b5e20).withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  indicatorColor: Colors.green[900],
                   isScrollable: true,
                   tabs: categoryTabGenerator(widget.height),
                 ),
               ),
             ),
           ),
-          SizedBox(
-            height: widget.height * 0.7,
+          Expanded(
+            flex: 7,
             child: Card(
-              elevation: 50,
+              color: Color.fromRGBO(255, 255, 255, 0.6),
               child: TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 controller: _tabController,
@@ -70,38 +74,41 @@ class _DishItemWidgetState extends State<DishItemWidget>
   }
 }
 
-List<ItemBuilder> dishItemGenerator() {
-  List<ItemBuilder> list = [];
+List<TabPage> dishItemGenerator() {
+  List<TabPage> list = [];
   for (int cateIndex = 0; cateIndex < dishCategory.length; cateIndex++) {
-    list.add(
-      ItemBuilder(cateIndex: cateIndex),
-    );
+    list.add(TabPage(cateIndex: cateIndex));
   }
   return list;
 }
 
-class ItemBuilder extends StatelessWidget {
-  const ItemBuilder({
-    Key? key,
-    required this.cateIndex,
-  }) : super(key: key);
-
+class TabPage extends StatefulWidget {
+  const TabPage({required this.cateIndex, Key? key}) : super(key: key);
   final int cateIndex;
 
   @override
+  _TabPageState createState() => _TabPageState();
+}
+
+class _TabPageState extends State<TabPage> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return GridView.builder(
       controller: ScrollController(),
       padding: const EdgeInsets.all(20),
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 200,
+        maxCrossAxisExtent: 300,
         crossAxisSpacing: 20,
         mainAxisSpacing: 20,
       ),
-      itemCount: dishCategory[cateIndex].listDishItem.length,
+      itemCount: dishCategory[widget.cateIndex].listDishItem.length,
       itemBuilder: (context, index) {
         return AddToCart(
-          cateIndex: cateIndex,
+          cateIndex: widget.cateIndex,
           index: index,
         );
       },

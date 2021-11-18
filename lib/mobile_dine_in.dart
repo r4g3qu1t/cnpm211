@@ -1,9 +1,11 @@
+import 'package:cnpm/order.dart';
 import 'package:flutter/material.dart';
-import 'data.dart';
 import 'package:provider/provider.dart';
 
-class DineInButton extends StatelessWidget {
-  const DineInButton({
+import 'data.dart';
+
+class MobileDineInButton extends StatelessWidget {
+  const MobileDineInButton({
     Key? key,
   }) : super(key: key);
 
@@ -69,17 +71,39 @@ class DineInButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Icon(
-            Icons.shopping_cart_outlined,
-            color: Colors.red,
-            size: 30,
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .pop(MaterialPageRoute(builder: (context) => OrderPage()));
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Icon(Icons.arrow_back),
+                  SizedBox(width: 10),
+                  Text("Quay lại"),
+                ],
+              ),
+            ),
           ),
-          Text(
-            "Giỏ hàng (${context.watch<SelectedItemProvider>().totalitem()})",
-            style: const TextStyle(
-                color: Colors.red, fontSize: 16, fontWeight: FontWeight.w600),
+          Row(
+            children: [
+              const Icon(
+                Icons.shopping_cart_outlined,
+                color: Colors.red,
+                size: 30,
+              ),
+              Text(
+                "Giỏ hàng (${context.watch<SelectedItemProvider>().totalitem()})",
+                style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600),
+              ),
+            ],
           ),
-          Expanded(child: Container()),
           ElevatedButton(
               onPressed: () {
                 createAlertDialog(context);

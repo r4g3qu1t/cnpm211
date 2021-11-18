@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'data.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 Widget _decreaseButton(int index, BuildContext context) {
@@ -36,74 +35,96 @@ class CartItemList extends StatelessWidget {
         controller: ScrollController(),
         itemBuilder: (ctx, index) {
           return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: const [
-                  BoxShadow(
-                    blurRadius: 20,
-                    color: Color(0xFFB0CCE1),
-                    offset: Offset(0, 4),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Dismissible(
+              // confirmDismiss: Future(true),
+              direction: DismissDirection.startToEnd,
+              key: Key(context
+                  .watch<SelectedItemProvider>()
+                  .selectedItem[index]
+                  .selectedDish
+                  .itemID
+                  .toString()),
+              onDismissed: (direction) {
+                int id = context
+                    .read<SelectedItemProvider>()
+                    .selectedItem[index]
+                    .selectedDish
+                    .itemID;
+                // print(id);
+                context.read<SelectedItemProvider>().remove(id);
+              },
+              background: Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xff1b5a20).withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: const Center(
+                  child: Text(
+                    "Trượt sang phải để xóa",
+                    style: TextStyle(
+                        color: Colors.white, overflow: TextOverflow.ellipsis),
                   ),
-                ],
-                borderRadius: BorderRadius.circular(10),
+                ),
               ),
-              height: 100,
-              child: Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(context
-                        .watch<SelectedItemProvider>()
-                        .selectedItem[index]
-                        .selectedDish
-                        .svgSrc),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+              child: Card(
+                color: const Color.fromRGBO(255, 255, 255, 0.9),
+                child: SizedBox(
+                  height: 100,
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                            "${index + 1}. ${context.watch<SelectedItemProvider>().selectedItem[index].selectedDish.dishName}"),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            _decreaseButton(index, context),
-                            Text(
-                                "${context.watch<SelectedItemProvider>().selectedItem[index].quantity}"),
-                            _increaseButton(index, context),
-                          ],
-                        )
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                            "\$ ${context.watch<SelectedItemProvider>().selectedItem[index].selectedDish.price * context.watch<SelectedItemProvider>().selectedItem[index].quantity}"),
-                        Text(
-                            "Incl tax 10% = ${(context.watch<SelectedItemProvider>().selectedItem[index].selectedDish.price * context.watch<SelectedItemProvider>().selectedItem[index].quantity * 0.1).toStringAsFixed(2)}"),
-                      ],
-                    ),
-                    Expanded(
-                      child: IconButton(
-                        onPressed: () {
-                          int id = context
-                              .read<SelectedItemProvider>()
-                              .selectedItem[index]
-                              .selectedDish
-                              .itemID;
-                          // print(id);
-                          context.read<SelectedItemProvider>().remove(id);
-                        },
-                        icon: Icon(
-                          Icons.delete,
-                          color: Colors.red[700],
+                        Image.asset(context
+                            .watch<SelectedItemProvider>()
+                            .selectedItem[index]
+                            .selectedDish
+                            .svgSrc),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Flexible(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(
+                                      "${index + 1}. ${context.watch<SelectedItemProvider>().selectedItem[index].selectedDish.dishName}",
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    _decreaseButton(index, context),
+                                    Text(
+                                      "${context.watch<SelectedItemProvider>().selectedItem[index].quantity}",
+                                    ),
+                                    _increaseButton(index, context),
+                                    Flexible(
+                                      child: FittedBox(
+                                        fit: BoxFit.scaleDown,
+                                        child: Text(
+                                          "${context.watch<SelectedItemProvider>().selectedItem[index].selectedDish.price * context.watch<SelectedItemProvider>().selectedItem[index].quantity} VND",
+                                          style: const TextStyle(
+                                              color: Colors.red, fontSize: 16),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
                         ),
-                      ),
-                    )
-                  ],
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),

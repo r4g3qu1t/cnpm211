@@ -10,7 +10,9 @@ bool authenticate() {
 }
 
 Widget loginScreen(BuildContext context) {
-  const double _height = 700, _width = 1000;
+  final height = MediaQuery.of(context).size.height;
+  final width = MediaQuery.of(context).size.width;
+  double _height = height, _width = width;
   final emailField = TextField(
     obscureText: false,
     style: style,
@@ -18,7 +20,7 @@ Widget loginScreen(BuildContext context) {
     decoration: InputDecoration(
         contentPadding: const EdgeInsets.fromLTRB(10, 1, 2, 1),
         hintText: "Email",
-        fillColor: Colors.blue,
+        fillColor: Colors.green[900],
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(3))),
   );
   final passwordField = TextField(
@@ -33,13 +35,13 @@ Widget loginScreen(BuildContext context) {
   final loginButon = Material(
     elevation: 5.0,
     borderRadius: BorderRadius.circular(3),
-    color: Colors.blue,
+    color: Colors.green[900],
     child: MaterialButton(
       padding: const EdgeInsets.fromLTRB(2, 1, 2, 1),
       onPressed: () {
         if (authenticate()) {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => const OrderPage()));
+              .push(MaterialPageRoute(builder: (context) => OrderPage()));
         }
       },
       child: Text("Login",
@@ -51,12 +53,12 @@ Widget loginScreen(BuildContext context) {
   final guestButton = Material(
     elevation: 5.0,
     borderRadius: BorderRadius.circular(3),
-    color: Colors.blue,
+    color: Colors.green[900],
     child: MaterialButton(
       padding: const EdgeInsets.fromLTRB(2, 1, 2, 1),
       onPressed: () {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const OrderPage()));
+            .push(MaterialPageRoute(builder: (context) => OrderPage()));
       },
       child: Text("Order now",
           textAlign: TextAlign.center,

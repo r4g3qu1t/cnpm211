@@ -25,11 +25,17 @@ class MyApp extends StatelessWidget {
       create: (context) => SelectedItemProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'POS',
+        title: 'Trà Sữa CNPM',
         scrollBehavior: MyCustomScrollBehavior(),
+        darkTheme: ThemeData(brightness: Brightness.dark),
+        themeMode: ThemeMode.light,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green[900],
+              ),
+            ),
+            iconTheme: IconThemeData(color: Colors.green[900])),
         home: const MyHomePage(),
       ),
     );
@@ -37,7 +43,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({ Key? key }) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
