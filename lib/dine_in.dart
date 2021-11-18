@@ -71,13 +71,12 @@ class DineInButton extends StatelessWidget {
         children: [
           const Icon(
             Icons.shopping_cart_outlined,
-            color: Colors.red,
+            color: Colors.black,
             size: 30,
           ),
           Text(
             "Giỏ hàng (${context.watch<SelectedItemProvider>().totalitem()})",
-            style: const TextStyle(
-                color: Colors.red, fontSize: 16, fontWeight: FontWeight.w600),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
           Expanded(child: Container()),
           ElevatedButton(

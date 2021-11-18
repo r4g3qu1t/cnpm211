@@ -11,7 +11,7 @@ class ReturnButton extends StatelessWidget {
     return Expanded(
       flex: 1,
       child: Card(
-        color: Color.fromRGBO(255, 255, 255, 0.6),
+        color:const Color.fromRGBO(255, 255, 255, 0.8),
         child: Align(
           alignment: Alignment.centerLeft,
           child: Padding(

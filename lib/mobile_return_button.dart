@@ -15,7 +15,7 @@ class MobileReturnButton extends StatelessWidget {
     return Expanded(
       flex: 1,
       child: Card(
-        color: Color.fromRGBO(255, 255, 255, 0.6),
+        color: const Color.fromRGBO(255, 255, 255, 0.8),
         child: Align(
           alignment: Alignment.centerLeft,
           child: Padding(
@@ -40,26 +40,23 @@ class MobileReturnButton extends StatelessWidget {
                     ),
                   ),
                 ),
-                TextButton(
+                ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const MobileCartItemList()));
                   },
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.shopping_cart_outlined,
-                        color: Colors.red,
-                        size: 30,
-                      ),
-                      Text(
-                        "Giỏ hàng (${context.watch<SelectedItemProvider>().totalitem()})",
-                        style: const TextStyle(
-                            color: Colors.red,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.shopping_cart_outlined,
+                        ),
+                        Text(
+                          "Giỏ hàng (${context.watch<SelectedItemProvider>().totalitem()})",
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

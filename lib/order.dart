@@ -49,39 +49,36 @@ class WideScreen extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Container(
-          color: const Color.fromRGBO(255, 255, 255, 0.2),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 7,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const ReturnButton(),
-                    DishItemWidget(height: _height),
-                  ],
-                ),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 7,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ReturnButton(),
+                  DishItemWidget(height: _height),
+                ],
               ),
-              Expanded(
-                flex: 3,
-                child: Card(
-                   color: Color.fromRGBO(255, 255, 255, 0.6),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        DineInButton(),
-                        CartItemList(),
-                        CheckOut(),
-                      ],
-                    ),
+            ),
+            Expanded(
+              flex: 3,
+              child: Card(
+                color:const Color.fromRGBO(255, 255, 255, 0.8),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      DineInButton(),
+                      CartItemList(),
+                      CheckOut(),
+                    ],
                   ),
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

@@ -19,7 +19,7 @@ class MobileCartItemList extends StatelessWidget {
           ),
         ),
         child: Card(
-          color: Color.fromRGBO(255, 255, 255, 0.85),
+          color:const Color.fromRGBO(255, 255, 255, 0.9),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

@@ -92,13 +92,13 @@ class MobileDineInButton extends StatelessWidget {
             children: [
               const Icon(
                 Icons.shopping_cart_outlined,
-                color: Colors.red,
+                color: Colors.black,
                 size: 30,
               ),
               Text(
                 "Giỏ hàng (${context.watch<SelectedItemProvider>().totalitem()})",
                 style: const TextStyle(
-                    color: Colors.red,
+                    color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w600),
               ),
