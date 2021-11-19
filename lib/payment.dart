@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 
 Widget paymentMethods(BuildContext context) {
   //anh nen
@@ -236,14 +237,14 @@ paySuccessPopup(BuildContext context) {
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: ElevatedButton(
                         onPressed: () {
-                          FeedbackPopup(context);
+                          feedbackPopup(context);
                         },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: const [
-                              SizedBox(width: 10, height: 25),
+                              SizedBox(width: 1, height: 25),
                               Text("Check out", textAlign: TextAlign.center),
                             ],
                           ),
@@ -259,7 +260,7 @@ paySuccessPopup(BuildContext context) {
       });
 }
 
-FeedbackPopup(BuildContext context) {
+feedbackPopup(BuildContext context) {
   return showDialog(
       context: context,
       builder: (context) {
@@ -285,17 +286,15 @@ FeedbackPopup(BuildContext context) {
                     Container(
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pop(context);
-                          Navigator.pop(context);
-                          Navigator.pop(context);
-                          Navigator.pop(context);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const MyHomePage()));
                         },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: const [
-                              SizedBox(width: 10, height: 25),
+                              SizedBox(width: 1, height: 25),
                               Text("Check out", textAlign: TextAlign.center),
                             ],
                           ),
@@ -307,14 +306,14 @@ FeedbackPopup(BuildContext context) {
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          feedbackField(context);
                         },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: const [
-                              SizedBox(width: 10, height: 25),
+                              SizedBox(width: 1, height: 25),
                               Text("Feedback", textAlign: TextAlign.center),
                             ],
                           ),
@@ -323,6 +322,71 @@ FeedbackPopup(BuildContext context) {
                     ),
                   ],
                 )
+              ],
+            ),
+          ),
+        );
+      });
+}
+
+feedbackField(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: Container(
+            width: 650,
+            height: 450,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                // tittle
+                Container(
+                  width: 600,
+                  height: 60,
+                  padding: const EdgeInsets.all(10.0),
+                  alignment: Alignment.bottomLeft,
+                  child: const Text(
+                      'Để lại ý kiến của bạn về trải nghiệm ở đây:',
+                      textAlign: TextAlign.start,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                ),
+                // text field
+                Container(
+                  width: 600,
+                  height: 280,
+                  padding: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.green.shade700),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: const TextField(
+                    maxLines: 10,
+                    decoration: InputDecoration.collapsed(
+                        hintText:
+                            "Mr Tí Đô xin cảm ơn những đóng góp quý giá của bạn!"),
+                  ),
+                ),
+
+                // submit button
+
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const MyHomePage()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        SizedBox(width: 1, height: 25),
+                        Text("Gửi đánh giá", textAlign: TextAlign.center),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
