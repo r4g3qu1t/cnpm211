@@ -1,8 +1,10 @@
 import 'dart:ui';
+import 'package:cnpm/payment.dart';
 import 'package:flutter/material.dart';
 import 'login.dart';
 import 'package:provider/provider.dart';
 import 'data.dart';
+import 'payment.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,5 +50,14 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return loginScreen(context);
+  }
+}
+
+class Paymentpage extends StatelessWidget {
+  const Paymentpage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return paymentMethods(context);
   }
 }

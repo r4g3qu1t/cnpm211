@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cnpm/data.dart';
 import 'package:provider/provider.dart';
+import 'main.dart';
 
 class CheckOut extends StatelessWidget {
   const CheckOut({
@@ -40,7 +41,10 @@ class CheckOut extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const Paymentpage()));
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
