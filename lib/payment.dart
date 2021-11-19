@@ -70,66 +70,62 @@ Widget paymentMethods(BuildContext context) {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Spacer(
-                  flex: 8,
-                ),
+                const Spacer(flex: 8),
                 //Vi dien tu
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      padding: EdgeInsets.all(7.0),
+                      padding: const EdgeInsets.all(7.0),
                       child: ElevatedButton(
                         onPressed: () {
-                          //Navigator.pop(context);
+                          paySuccessPopup(context);
                         },
                         style: ElevatedButton.styleFrom(primary: Colors.white),
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: const DecorationImage(
-                                image: AssetImage("assets/images/momo.jpg"),
-                                fit: BoxFit.scaleDown),
-                          ),
+                              borderRadius: BorderRadius.circular(10),
+                              image: const DecorationImage(
+                                  image: AssetImage("assets/images/momo.jpg"),
+                                  fit: BoxFit.scaleDown)),
                           width: 190,
                           height: 190,
                         ),
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(7.0),
+                      padding: const EdgeInsets.all(7.0),
                       child: ElevatedButton(
                         onPressed: () {
-                          //Navigator.pop(context);
+                          paySuccessPopup(context);
                         },
                         style: ElevatedButton.styleFrom(primary: Colors.white),
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: const DecorationImage(
-                                image:
-                                    AssetImage("assets/images/viettelpay.png"),
-                                fit: BoxFit.scaleDown),
-                          ),
+                              borderRadius: BorderRadius.circular(10),
+                              image: const DecorationImage(
+                                  image: AssetImage(
+                                      "assets/images/viettelpay.png"),
+                                  fit: BoxFit.scaleDown)),
                           width: 190,
                           height: 190,
                         ),
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(7.0),
+                      padding: const EdgeInsets.all(7.0),
                       child: ElevatedButton(
                         onPressed: () {
-                          //Navigator.pop(context);
+                          paySuccessPopup(context);
                         },
                         style: ElevatedButton.styleFrom(primary: Colors.white),
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: const DecorationImage(
-                                image: AssetImage("assets/images/zalopay.png"),
-                                fit: BoxFit.scaleDown),
-                          ),
+                              borderRadius: BorderRadius.circular(10),
+                              image: const DecorationImage(
+                                  image:
+                                      AssetImage("assets/images/zalopay.png"),
+                                  fit: BoxFit.scaleDown)),
                           width: 190,
                           height: 190,
                         ),
@@ -137,70 +133,52 @@ Widget paymentMethods(BuildContext context) {
                     ),
                   ],
                 ),
-                const Spacer(
-                  flex: 1,
-                ),
+                const Spacer(flex: 1),
                 //Credit card
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        //Navigator.pop(context);
+                        paySuccessPopup(context);
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                            borderRadius: BorderRadius.circular(10)),
                         width: 665,
                         height: 80,
                         child: const Center(
-                          child: Text(
-                            "THANH TOÁN BẰNG CREDIT CARD",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 22,
-                            ),
-                          ),
-                        ),
+                            child: Text("THANH TOÁN BẰNG CREDIT CARD",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 22))),
                       ),
                     ),
                   ],
                 ),
-                const Spacer(
-                  flex: 1,
-                ),
+                const Spacer(flex: 1),
                 //Thanh toan tien mat
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        //Navigator.pop(context);
+                        paySuccessPopup(context);
                       },
                       style: ElevatedButton.styleFrom(primary: Colors.black),
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                            borderRadius: BorderRadius.circular(10)),
                         width: 665,
                         height: 80,
                         child: const Center(
-                          child: Text(
-                            "THANH TOÁN BẰNG TIỀN MẶT",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 22,
-                            ),
-                          ),
-                        ),
+                            child: Text("THANH TOÁN BẰNG TIỀN MẶT",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 22))),
                       ),
                     ),
                   ],
                 ),
-                const Spacer(
-                  flex: 8,
-                ),
+                const Spacer(flex: 8),
               ],
             ),
           ),
@@ -208,4 +186,146 @@ Widget paymentMethods(BuildContext context) {
       ),
     ),
   );
+}
+
+paySuccessPopup(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: Container(
+            width: 450,
+            height: 450,
+            child: Column(
+              children: [
+                //Payment successful image
+                Container(
+                  width: 400,
+                  height: 400,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: ExactAssetImage(
+                              'assets/icons/payment_successful.png'),
+                          fit: BoxFit.cover)),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    //Back to home page button
+                    Container(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Icon(Icons.arrow_back),
+                              SizedBox(width: 10, height: 25),
+                              Text("Quay lại"),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    //Check out button
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          FeedbackPopup(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              SizedBox(width: 10, height: 25),
+                              Text("Check out", textAlign: TextAlign.center),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      });
+}
+
+FeedbackPopup(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: Container(
+            width: 450,
+            height: 450,
+            child: Column(
+              children: [
+                //Payment successful image
+                Container(
+                  width: 400,
+                  height: 400,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: ExactAssetImage('assets/icons/feedback.png'),
+                          fit: BoxFit.cover)),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    //Checkout button
+                    Container(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              SizedBox(width: 10, height: 25),
+                              Text("Check out", textAlign: TextAlign.center),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    //Feedback button
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              SizedBox(width: 10, height: 25),
+                              Text("Feedback", textAlign: TextAlign.center),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      });
 }
