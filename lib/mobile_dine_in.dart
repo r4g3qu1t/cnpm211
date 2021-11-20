@@ -13,14 +13,14 @@ class MobileDineInButton extends StatelessWidget {
     return showDialog(
         context: context,
         builder: (context) {
-          Future.delayed(Duration(seconds: 4), () {
+          Future.delayed(const Duration(seconds: 4), () {
             Navigator.of(context).pop(true);
           });
           return Dialog(
             child: Container(
               width: 300,
               height: 300,
-              decoration: BoxDecoration(
+              decoration:const BoxDecoration(
                   image: DecorationImage(
                       image: ExactAssetImage('assets/icons/dine_in_popup.png'),
                       fit: BoxFit.cover)),
@@ -36,24 +36,24 @@ class MobileDineInButton extends StatelessWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("Insert your table number!"),
+            title: const Text("Insert your table number!"),
             content: TextField(controller: tablenumber),
             actions: <Widget>[
               MaterialButton(
                 elevation: 5.0,
-                child: Text("Confirm Order"),
+                child:const Text("Confirm Order"),
                 color: Colors.green[700],
                 textColor: Colors.white,
                 onPressed: () {
                   createPopup(context);
-                  Future.delayed(Duration(seconds: 4), () {
+                  Future.delayed(const Duration(seconds: 4), () {
                     Navigator.of(context).pop(true);
                   });
                 },
               ),
               MaterialButton(
                   elevation: 5.0,
-                  child: Text("Cancel"),
+                  child: const Text("Cancel"),
                   color: Colors.blueGrey,
                   textColor: Colors.white,
                   onPressed: () {
