@@ -36,7 +36,7 @@ class _DishItemWidgetState extends State<DishItemWidget>
           Expanded(
             flex: 2,
             child: Card(
-              color: Color.fromRGBO(255, 255, 255, 0.6),
+              color: const Color.fromRGBO(255, 255, 255, 0.8),
               child: Container(
                 decoration: BoxDecoration(
                   // color: Colors.white,
@@ -60,7 +60,7 @@ class _DishItemWidgetState extends State<DishItemWidget>
           Expanded(
             flex: 7,
             child: Card(
-              color: Color.fromRGBO(255, 255, 255, 0.6),
+              color: const Color.fromRGBO(255, 255, 255, 0.8),
               child: TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 controller: _tabController,

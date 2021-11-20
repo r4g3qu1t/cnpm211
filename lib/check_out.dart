@@ -20,23 +20,19 @@ class CheckOut extends StatelessWidget {
                 padding: EdgeInsets.all(8.0),
                 child: Text(
                   "Tổng:",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ),
               ),
-              Expanded(
-                child: Container(),
-              ),
+              const Spacer(),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(context
-                        .watch<SelectedItemProvider>()
-                        .total()
-                        .toString()),
-                    Text(
-                        "Thuế VAT 10% = ${(context.watch<SelectedItemProvider>().total() * 0.1).toString()} VND")
-                  ],
+                child: Text(
+                  context.watch<SelectedItemProvider>().total().toString() +
+                      ' VND',
+                  style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.red),
                 ),
               ),
             ],

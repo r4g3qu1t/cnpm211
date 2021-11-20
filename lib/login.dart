@@ -105,7 +105,6 @@ class LoginWidget extends StatelessWidget {
             height: _height,
             width: _width,
             decoration: BoxDecoration(
-              color: Colors.amber,
               borderRadius: BorderRadius.circular(5),
             ),
             child: Card(
