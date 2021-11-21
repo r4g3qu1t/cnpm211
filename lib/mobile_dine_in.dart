@@ -1,5 +1,6 @@
 import 'package:cnpm/order.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'data.dart';
@@ -14,16 +15,35 @@ class MobileDineInButton extends StatelessWidget {
     return showDialog(
       context: context,
       builder: (context) {
+        final tableController = TextEditingController();
+        final noteController = TextEditingController();
         return AlertDialog(
-          title: const Text("Ghi chú"),
+          title: const Text("Chọn bàn"),
           content: SizedBox(
             width: MediaQuery.of(context).size.width * 0.7,
             height: MediaQuery.of(context).size.height * 0.5,
-            child: TextField(
-              controller: textController,
-              maxLines: null,
-              expands: true,
-              decoration: const InputDecoration(hintText: "Nhập ghi chú"),
+            child: Column(
+              children: [
+                TextField(
+                  controller: tableController,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  decoration: const InputDecoration(
+                    hintText: "Nhập số bàn",
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: TextField(
+                    maxLines: null,
+                    controller: noteController,
+                    expands: true,
+                    decoration: const InputDecoration(
+                      hintText: "Nhập ghi chú",
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           actions: [
@@ -97,7 +117,7 @@ class MobileDineInButton extends StatelessWidget {
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
-                child: Text("Ghi chú"),
+                child: Text("Chọn bàn"),
               ))
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'data.dart';
 import 'package:provider/provider.dart';
 
@@ -11,17 +12,35 @@ class DineInButton extends StatelessWidget {
     return showDialog(
       context: context,
       builder: (context) {
-        final textController = TextEditingController();
+        final tableController = TextEditingController();
+        final noteController = TextEditingController();
         return AlertDialog(
           title: const Text("Ghi chú"),
           content: SizedBox(
             width: MediaQuery.of(context).size.width * 0.5,
             height: MediaQuery.of(context).size.height * 0.5,
-            child: TextField(
-              maxLines: null,
-              controller: textController,
-              expands: true,
-              decoration: const InputDecoration(hintText: "Nhập ghi chú"),
+            child: Column(
+              children: [
+                TextField(
+                  controller: tableController,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  decoration: const InputDecoration(
+                    hintText: "Nhập số bàn",
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: TextField(
+                    maxLines: null,
+                    controller: noteController,
+                    expands: true,
+                    decoration: const InputDecoration(
+                      hintText: "Nhập ghi chú",
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           actions: [
@@ -72,7 +91,7 @@ class DineInButton extends StatelessWidget {
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
-                child: Text("Ghi chú"),
+                child: Text("Chọn bàn"),
               ))
         ],
       ),
