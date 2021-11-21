@@ -29,7 +29,7 @@ Widget loginScreen(BuildContext context) {
     controller: passwordController,
     decoration: InputDecoration(
         contentPadding: const EdgeInsets.fromLTRB(10, 1, 2, 1),
-        hintText: "Password",
+        hintText: "Mật khẩu",
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(3))),
   );
   final loginButon = Material(
@@ -44,10 +44,9 @@ Widget loginScreen(BuildContext context) {
               .push(MaterialPageRoute(builder: (context) => OrderPage()));
         }
       },
-      child: Text("Login",
+      child: Text("Đăng nhập",
           textAlign: TextAlign.center,
-          style:
-              style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+          style: style.copyWith(color: Colors.white)),
     ),
   );
   final guestButton = Material(
@@ -60,10 +59,13 @@ Widget loginScreen(BuildContext context) {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => OrderPage()));
       },
-      child: Text("Order now",
-          textAlign: TextAlign.center,
-          style:
-              style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+      child: Text(
+        "Đặt món ngay",
+        textAlign: TextAlign.center,
+        style: style.copyWith(
+          color: Colors.white,
+        ),
+      ),
     ),
   );
   return LoginWidget(

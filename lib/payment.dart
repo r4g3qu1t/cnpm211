@@ -48,7 +48,7 @@ Widget paymentMethods(BuildContext context) {
                 ),
                 const Expanded(
                   child: Text(
-                    "PAYMENT METHODS",
+                    "Phương thức thanh toán",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 22,
@@ -130,11 +130,13 @@ Widget paymentMethods(BuildContext context) {
                     paySuccessPopup(context);
                   },
                   child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text("THANH TOÁN BẰNG CREDIT CARD",
-                          style: TextStyle(fontSize: 22))),
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "THANH TOÁN BẰNG CREDIT CARD",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
                 ),
-
                 const Spacer(flex: 1),
                 //Thanh toan tien mat
                 ElevatedButton(
@@ -143,13 +145,15 @@ Widget paymentMethods(BuildContext context) {
                   },
                   style: ElevatedButton.styleFrom(primary: Colors.black),
                   child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 27),
-                      child: Text("THANH TOÁN BẰNG TIỀN MẶT",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 22))),
+                    padding:
+                        EdgeInsets.symmetric(vertical: 8.0, horizontal: 25),
+                    child: Text(
+                      "THANH TOÁN BẰNG TIỀN MẶT",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
                 ),
-
                 const Spacer(flex: 8),
               ],
             ),
@@ -175,10 +179,11 @@ paySuccessPopup(BuildContext context) {
                   width: 400,
                   height: 400,
                   decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: ExactAssetImage(
-                              'assets/icons/payment_successful.png'),
-                          fit: BoxFit.cover)),
+                    image: DecorationImage(
+                        image: ExactAssetImage(
+                            'assets/icons/payment_successful.png'),
+                        fit: BoxFit.cover),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -187,18 +192,10 @@ paySuccessPopup(BuildContext context) {
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pop(context);
-                        Navigator.pop(context);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Icon(Icons.arrow_back),
-                            SizedBox(width: 10, height: 25),
-                            Text("Quay lại"),
-                          ],
-                        ),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 12.0),
+                        child: Text("Quay lại"),
                       ),
                     ),
                     //Check out button
@@ -208,15 +205,9 @@ paySuccessPopup(BuildContext context) {
                         onPressed: () {
                           feedbackPopup(context);
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              SizedBox(width: 1, height: 25),
-                              Text("Check out", textAlign: TextAlign.center),
-                            ],
-                          ),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 12.0),
+                          child: Text("Đánh giá"),
                         ),
                       ),
                     ),
@@ -255,37 +246,26 @@ feedbackPopup(BuildContext context) {
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pop(context);
-                        Navigator.pop(context);
-                        Navigator.pop(context);
-                        Navigator.pop(context);
                       },
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
                         child: Row(
-                          mainAxisSize: MainAxisSize.min,
                           children: const [
-                            SizedBox(width: 10, height: 25),
-                            Text("Check out", textAlign: TextAlign.center),
+                            Text("Quay lại", textAlign: TextAlign.center),
                           ],
                         ),
                       ),
                     ),
                     //Feedback button
-                    Container(
+                    Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: ElevatedButton(
                         onPressed: () {
                           feedbackField(context);
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              SizedBox(width: 1, height: 25),
-                              Text("Feedback", textAlign: TextAlign.center),
-                            ],
-                          ),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 12.0),
+                          child: Text("Phản hồi", textAlign: TextAlign.center),
                         ),
                       ),
                     ),
@@ -303,7 +283,7 @@ feedbackField(BuildContext context) {
       context: context,
       builder: (context) {
         return Dialog(
-          child: Container(
+          child: SizedBox(
             width: 650,
             height: 450,
             child: Column(
@@ -322,37 +302,42 @@ feedbackField(BuildContext context) {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 ),
                 // text field
-                Container(
-                  width: 600,
-                  height: 280,
-                  padding: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.green.shade700),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: const TextField(
-                    maxLines: 10,
-                    decoration: InputDecoration.collapsed(
-                        hintText:
-                            "Mr Tí Đô xin cảm ơn những đóng góp quý giá của bạn!"),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.green.shade700),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: const TextField(
+                        expands: true,
+                        minLines: null,
+                        maxLines: null,
+                        decoration: InputDecoration.collapsed(
+                            hintText:
+                                "Mr Tí Đô xin cảm ơn những đóng góp quý giá của bạn!"),
+                      ),
+                    ),
                   ),
                 ),
 
                 // submit button
 
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const MyHomePage()));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        SizedBox(width: 1, height: 25),
-                        Text("Gửi đánh giá", textAlign: TextAlign.center),
-                      ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const MyHomePage(),
+                        ),
+                      );
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: Text("Gửi đánh giá", textAlign: TextAlign.center),
                     ),
                   ),
                 ),
