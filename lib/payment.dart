@@ -1,7 +1,8 @@
 import 'package:cnpm/data.dart';
 import 'package:flutter/material.dart';
-import 'main.dart';
 import 'package:provider/provider.dart';
+
+import 'order.dart';
 
 Widget paymentMethods(BuildContext context) {
   //anh nen
@@ -169,189 +170,194 @@ Widget paymentMethods(BuildContext context) {
 paySuccessPopup(BuildContext context) {
   context.read<SelectedItemProvider>().clearcart();
   return showDialog(
-      context: context,
-      builder: (context) {
-        return Dialog(
-          child: SizedBox(
-            width: 450,
-            height: 450,
-            child: Column(
-              children: [
-                //Payment successful image
-                Container(
-                  width: 400,
-                  height: 400,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: ExactAssetImage(
-                            'assets/icons/payment_successful.png'),
-                        fit: BoxFit.cover),
-                  ),
+    context: context,
+    builder: (context) {
+      return Dialog(
+        child: SizedBox(
+          width: 450,
+          height: 450,
+          child: Column(
+            children: [
+              //Payment successful image
+              Container(
+                width: 400,
+                height: 400,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: ExactAssetImage(
+                          'assets/icons/payment_successful.png'),
+                      fit: BoxFit.cover),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    //Back to home page button
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        Navigator.pop(context);
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 12.0),
-                        child: Text("Quay lại"),
-                      ),
-                    ),
-                    //Check out button
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          feedbackPopup(context);
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 12.0),
-                          child: Text("Check out"),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        );
-      });
-}
-
-feedbackPopup(BuildContext context) {
-  return showDialog(
-      context: context,
-      builder: (context) {
-        return Dialog(
-          child: SizedBox(
-            width: 450,
-            height: 450,
-            child: Column(
-              children: [
-                //Payment successful image
-                Container(
-                  width: 400,
-                  height: 400,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: ExactAssetImage('assets/icons/feedback.png'),
-                          fit: BoxFit.cover)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    //Checkout button
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const MyHomePage(),
-                          ),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 12.0),
-                        child: Row(
-                          children: const [
-                            Text("Thoát", textAlign: TextAlign.center),
-                          ],
-                        ),
-                      ),
-                    ),
-                    //Feedback button
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          feedbackField(context);
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 12.0),
-                          child: Text("Phản hồi", textAlign: TextAlign.center),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        );
-      });
-}
-
-feedbackField(BuildContext context) {
-  return showDialog(
-      context: context,
-      builder: (context) {
-        return Dialog(
-          child: SizedBox(
-            width: 650,
-            height: 450,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                // tittle
-                Container(
-                  width: 600,
-                  height: 60,
-                  padding: const EdgeInsets.all(10.0),
-                  alignment: Alignment.bottomLeft,
-                  child: const Text(
-                      'Để lại ý kiến của bạn về trải nghiệm ở đây:',
-                      textAlign: TextAlign.start,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                ),
-                // text field
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.green.shade700),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: const TextField(
-                        expands: true,
-                        minLines: null,
-                        maxLines: null,
-                        decoration: InputDecoration.collapsed(
-                            hintText:
-                                "Mr Tí Đô xin cảm ơn những đóng góp quý giá của bạn!"),
-                      ),
-                    ),
-                  ),
-                ),
-
-                // submit button
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  //Back to home page button
+                  ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(
+                      Navigator.pop(context);
+                      Navigator.of(context).pop(
                         MaterialPageRoute(
-                          builder: (context) => const MyHomePage(),
+                          builder: (context) => OrderPage(),
                         ),
                       );
                     },
                     child: const Padding(
-                      padding: EdgeInsets.all(12.0),
-                      child: Text("Gửi đánh giá", textAlign: TextAlign.center),
+                      padding: EdgeInsets.symmetric(vertical: 12.0),
+                      child: Text("Quay lại"),
+                    ),
+                  ),
+                  //Check out button
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        feedbackPopup(context);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 12.0),
+                        child: Text("Check out"),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+feedbackPopup(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return Dialog(
+        child: SizedBox(
+          width: 450,
+          height: 450,
+          child: Column(
+            children: [
+              //Payment successful image
+              Container(
+                width: 400,
+                height: 400,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: ExactAssetImage('assets/icons/feedback.png'),
+                        fit: BoxFit.cover)),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  //Checkout button
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 12.0),
+                      child: Row(
+                        children: const [
+                          Text("Thoát", textAlign: TextAlign.center),
+                        ],
+                      ),
+                    ),
+                  ),
+                  //Feedback button
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        feedbackField(context);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 12.0),
+                        child: Text("Phản hồi", textAlign: TextAlign.center),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+feedbackField(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return Dialog(
+        child: SizedBox(
+          width: 650,
+          height: 450,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              // tittle
+              Container(
+                width: 600,
+                height: 60,
+                padding: const EdgeInsets.all(10.0),
+                alignment: Alignment.bottomLeft,
+                child: const Text('Để lại ý kiến của bạn về trải nghiệm ở đây:',
+                    textAlign: TextAlign.start,
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              ),
+              // text field
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.green.shade700),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: const TextField(
+                      expands: true,
+                      minLines: null,
+                      maxLines: null,
+                      decoration: InputDecoration.collapsed(
+                          hintText:
+                              "Mr Tí Đô xin cảm ơn những đóng góp quý giá của bạn!"),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+
+              // submit button
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Text("Gửi đánh giá", textAlign: TextAlign.center),
+                  ),
+                ),
+              ),
+            ],
           ),
-        );
-      });
+        ),
+      );
+    },
+  );
 }

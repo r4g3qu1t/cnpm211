@@ -18,8 +18,8 @@ class ReturnButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 17),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const MyHomePage()));
+                Navigator.of(context).pop(MaterialPageRoute(
+                    builder: (context) => const MyHomePage(),),);
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),

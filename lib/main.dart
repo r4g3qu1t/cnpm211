@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'dart:ui';
 import 'package:cnpm/payment.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -49,7 +51,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return loginScreen(context);
+    return const LoginScreen();
   }
 }
 
