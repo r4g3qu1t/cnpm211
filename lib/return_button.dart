@@ -11,15 +11,15 @@ class ReturnButton extends StatelessWidget {
     return Expanded(
       flex: 1,
       child: Card(
-        color:const Color.fromRGBO(255, 255, 255, 0.8),
+        color: const Color.fromRGBO(255, 255, 255, 0.8),
         child: Align(
           alignment: Alignment.centerLeft,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 17),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const MyHomePage()));
+                Navigator.of(context).pop(MaterialPageRoute(
+                    builder: (context) => const MyHomePage(),),);
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),

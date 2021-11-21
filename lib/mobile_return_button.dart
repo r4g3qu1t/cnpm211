@@ -25,8 +25,11 @@ class MobileReturnButton extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const MyHomePage()));
+                    Navigator.of(context).pop(
+                      MaterialPageRoute(
+                        builder: (context) => const MyHomePage(),
+                      ),
+                    );
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -42,8 +45,11 @@ class MobileReturnButton extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const MobileCartItemList()));
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const MobileCartItemList(),
+                      ),
+                    );
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

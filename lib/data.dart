@@ -211,6 +211,7 @@ class SelectedItemProvider extends ChangeNotifier {
   }
 
   List<CartItem> selectedItem = [];
+
   void add(int cateIndex, int index) {
     CartItem newItem = CartItem(
         dishCategory[cateIndex].listDishItem[index], tempDetailQuantity);
@@ -253,5 +254,10 @@ class SelectedItemProvider extends ChangeNotifier {
       _total += selectedItem[i].quantity * selectedItem[i].selectedDish.price;
     }
     return _total;
+  }
+
+  void clearcart() {
+    selectedItem.clear();
+    notifyListeners();
   }
 }
