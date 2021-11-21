@@ -7,59 +7,46 @@ class DineInButton extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  createPopup(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          Future.delayed(const Duration(seconds: 4), () {
-            Navigator.of(context).pop(true);
-          });
-          return Dialog(
-            child: Container(
-              width: 300,
-              height: 300,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: ExactAssetImage('assets/icons/dine_in_popup.png'),
-                      fit: BoxFit.cover)),
-            ),
-          );
-        });
-  }
-
   createAlertDialog(BuildContext context) {
-    TextEditingController tablenumber = TextEditingController();
-
     return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text("Insert your table number!"),
-            content: TextField(controller: tablenumber),
-            actions: <Widget>[
-              MaterialButton(
-                elevation: 5.0,
-                child: const Text("Confirm Order"),
-                color: Colors.green[700],
-                textColor: Colors.white,
-                onPressed: () {
-                  createPopup(context);
-                  Future.delayed(const Duration(seconds: 4), () {
-                    Navigator.of(context).pop(true);
-                  });
-                },
+      context: context,
+      builder: (context) {
+        final textController = TextEditingController();
+        return AlertDialog(
+          title: const Text("Ghi chú"),
+          content: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: TextField(
+              maxLines: null,
+              controller: textController,
+              expands: true,
+              decoration: const InputDecoration(hintText: "Nhập ghi chú"),
+            ),
+          ),
+          actions: [
+            ElevatedButton(
+              child: const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text("Xác nhận"),
               ),
-              MaterialButton(
-                  elevation: 5.0,
-                  child: const Text("Cancel"),
-                  color: Colors.blueGrey,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  })
-            ],
-          );
-        });
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            ElevatedButton(
+              child: const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text("Hủy"),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -85,7 +72,7 @@ class DineInButton extends StatelessWidget {
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
-                child: Text("Chọn bàn"),
+                child: Text("Ghi chú"),
               ))
         ],
       ),
