@@ -10,6 +10,23 @@ class MobileDineInButton extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  createPopup(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            child: Container(
+              width: 300,
+              height: 300,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: ExactAssetImage('assets/icons/dine_in_popup.png'),
+                      fit: BoxFit.cover)),
+            ),
+          );
+        });
+  }
+
   final textController = TextEditingController();
   createAlertDialog(BuildContext context) {
     return showDialog(
@@ -53,7 +70,7 @@ class MobileDineInButton extends StatelessWidget {
                 child: Text("Xác nhận"),
               ),
               onPressed: () {
-                Navigator.of(context).pop();
+                createPopup(context);
               },
             ),
             ElevatedButton(

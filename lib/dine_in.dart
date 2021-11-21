@@ -7,6 +7,22 @@ class DineInButton extends StatelessWidget {
   const DineInButton({
     Key? key,
   }) : super(key: key);
+  createPopup(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            child: Container(
+              width: 300,
+              height: 300,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: ExactAssetImage('assets/icons/dine_in_popup.png'),
+                      fit: BoxFit.cover)),
+            ),
+          );
+        });
+  }
 
   createAlertDialog(BuildContext context) {
     return showDialog(
@@ -50,7 +66,7 @@ class DineInButton extends StatelessWidget {
                 child: Text("Xác nhận"),
               ),
               onPressed: () {
-                Navigator.of(context).pop();
+                createPopup(context);
               },
             ),
             ElevatedButton(
