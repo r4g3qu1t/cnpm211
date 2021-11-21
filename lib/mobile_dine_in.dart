@@ -1,11 +1,12 @@
 import 'package:cnpm/order.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'data.dart';
 
 class MobileDineInButton extends StatelessWidget {
-  const MobileDineInButton({
+  MobileDineInButton({
     Key? key,
   }) : super(key: key);
 
@@ -13,14 +14,11 @@ class MobileDineInButton extends StatelessWidget {
     return showDialog(
         context: context,
         builder: (context) {
-          Future.delayed(Duration(seconds: 4), () {
-            Navigator.of(context).pop(true);
-          });
           return Dialog(
             child: Container(
               width: 300,
               height: 300,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: ExactAssetImage('assets/icons/dine_in_popup.png'),
                       fit: BoxFit.cover)),
@@ -29,39 +27,65 @@ class MobileDineInButton extends StatelessWidget {
         });
   }
 
+  final textController = TextEditingController();
   createAlertDialog(BuildContext context) {
-    TextEditingController tablenumber = TextEditingController();
-
     return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text("Insert your table number!"),
-            content: TextField(controller: tablenumber),
-            actions: <Widget>[
-              MaterialButton(
-                elevation: 5.0,
-                child: Text("Confirm Order"),
-                color: Colors.green[700],
-                textColor: Colors.white,
-                onPressed: () {
-                  createPopup(context);
-                  Future.delayed(Duration(seconds: 4), () {
-                    Navigator.of(context).pop(true);
-                  });
-                },
+      context: context,
+      builder: (context) {
+        final tableController = TextEditingController();
+        final noteController = TextEditingController();
+        return AlertDialog(
+          title: const Text("Chọn bàn"),
+          content: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.7,
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: Column(
+              children: [
+                TextField(
+                  controller: tableController,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  decoration: const InputDecoration(
+                    hintText: "Nhập số bàn",
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: TextField(
+                    maxLines: null,
+                    controller: noteController,
+                    expands: true,
+                    decoration: const InputDecoration(
+                      hintText: "Nhập ghi chú",
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            ElevatedButton(
+              child: const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text("Xác nhận"),
               ),
-              MaterialButton(
-                  elevation: 5.0,
-                  child: Text("Cancel"),
-                  color: Colors.blueGrey,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  })
-            ],
-          );
-        });
+              onPressed: () {
+                createPopup(context);
+              },
+            ),
+            ElevatedButton(
+              child: const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text("Hủy"),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
+      },
+    );
   }
 
   @override
