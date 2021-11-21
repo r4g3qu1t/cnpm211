@@ -1,5 +1,7 @@
+import 'package:cnpm/data.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'package:provider/provider.dart';
 
 Widget paymentMethods(BuildContext context) {
   //anh nen
@@ -165,6 +167,7 @@ Widget paymentMethods(BuildContext context) {
 }
 
 paySuccessPopup(BuildContext context) {
+  context.read<SelectedItemProvider>().clearcart();
   return showDialog(
       context: context,
       builder: (context) {
@@ -192,6 +195,7 @@ paySuccessPopup(BuildContext context) {
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pop(context);
+                        Navigator.pop(context);
                       },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(vertical: 12.0),
@@ -207,7 +211,7 @@ paySuccessPopup(BuildContext context) {
                         },
                         child: const Padding(
                           padding: EdgeInsets.symmetric(vertical: 12.0),
-                          child: Text("Đánh giá"),
+                          child: Text("Check out"),
                         ),
                       ),
                     ),
@@ -245,13 +249,17 @@ feedbackPopup(BuildContext context) {
                     //Checkout button
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const MyHomePage(),
+                          ),
+                        );
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12.0),
                         child: Row(
                           children: const [
-                            Text("Quay lại", textAlign: TextAlign.center),
+                            Text("Thoát", textAlign: TextAlign.center),
                           ],
                         ),
                       ),
